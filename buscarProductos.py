@@ -15,7 +15,7 @@ def menuSecundario():
 			print(i)
 			
 		import controlOpciones
-		opcion = controlOpciones.verficador(subMenu)
+		opcion = controlOpciones.verificador(subMenu)
 	
 #--------------
 		import sqlite3
@@ -118,4 +118,4 @@ def menuSecundario():
 		elif opcion == 5:
 		
 			conexion.close()
-			break				#volver al menú anterior (principal)
+			continue				#volver al menú anterior (principal)

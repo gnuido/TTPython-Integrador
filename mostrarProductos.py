@@ -36,7 +36,7 @@ def menuSecundario():
 			
 		elif opcion == 5:
 			conexion.close()
-			break
+			continue
 			
 		cursor.execute(query)
 		lista = cursor.fetchall()
