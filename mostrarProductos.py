@@ -5,7 +5,7 @@ def menuSecundario():
 	subMenu = [	'1> Ver lista de productos completa.',
 				'2> Ver lista de productos fuera de stock.',
 				'3> Ver lista de productos sin ubicar.',
-				'4> Ver lista de productos sin proveedores.',
+				'4> Ver lista de productos sin proveedor.',
 				'5> Volver al menú anterior.']
 	
 	opcion = ''
@@ -32,7 +32,7 @@ def menuSecundario():
 			query = """SELECT * FROM PRODUCTOS WHERE "UBICACION" = NULL"""
 		
 		elif opcion == 4:
-			query = """SELECT * FROM PRODUCTOS WHERE "PROVEEDORES" = NULL"""
+			query = """SELECT * FROM PRODUCTOS WHERE "PROVEEDOR" = NULL"""
 			
 		elif opcion == 5:
 			conexion.close()

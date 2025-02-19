@@ -14,7 +14,7 @@ def crear():
 					"CANTIDAD" INTEGER NOT NULL,
 					"PRECIO" REAL,
 					"UBICACION" INTEGER,
-					"PROVEEDORES" TEXT,
+					"PROVEEDOR" TEXT,
 					PRIMARY KEY("ID"))"""	)
 					
 	print('Tabla "PRODUCTOS" creada exitosamente.')
