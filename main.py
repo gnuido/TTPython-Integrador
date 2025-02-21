@@ -29,10 +29,15 @@ while opcion != 7:
 		mostrarProductos.menuSecundario()
 		continue
 	
-	if opcion == 2:
+	elif opcion == 2:
 		import buscarProductos
 		buscarProductos.menuSecundario()
 		continue
 	
-	
+	elif opcion == 3:
+		import añadirProductos
+		añadirProductos.menuSecundario()
+		continue
 		
+	elif opcion == 4:
+			
