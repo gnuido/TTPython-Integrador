@@ -40,4 +40,8 @@ while opcion != 7:
 		continue
 		
 	elif opcion == 4:
-			
+		import actualizarProductos
+		actualizarProductos.menuSecundario()
+		continue
+		
+	

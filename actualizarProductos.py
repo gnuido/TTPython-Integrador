@@ -36,7 +36,7 @@ def menuSecundario():
 		cursor = conexion.cursor()
 		
 		if opcion == 1:
-			
+		
 			while True:
 				try:
 					nuevaMarca = str(input('Marca comercial: '))
@@ -51,7 +51,7 @@ def menuSecundario():
 			conexion.close()
 			
 		elif opcion == 2:
-			
+		
 			while True:
 				try:
 					nuevaDescripcion = str(input('Descripción del producto: '))
@@ -82,19 +82,62 @@ def menuSecundario():
 			
 		elif opcion == 4:
 			
-			while True:
-				nuevoPrecio = float(input('Precio unitario (dejar en blanco de ser necesario): '))
-				break
-			except ValueError:
-				print('El precio ingresado no es válido. Intente nuevamente: ')
-				continue
-				
+			while True:			
+				nuevoPrecio = input('Precio unitario (dejar en blanco de ser necesario): ')
+				if nuevoPrecio == '':		#en blanco inserta valor NULL en la tabla
+					break
+				else:
+					try:
+						float(nuevoPrecio)
+						break
+					except ValueError:
+						print('El precio ingresado no es válido. Intente nuevamente: ')
+						continue
+			
 			query = f"""UPDATE PRODUCTOS SET 'PRECIO' = {nuevoPrecio} WHERE 'ID' = {idProducto}"""
 			
 			cursor.execute(query)
 			conexion.close()
 			
 		elif opcion == 5:
-			
+		
 			while True:
-				nuevaUbicacíon = int(input('Nº de estante de depósito (dejar en blanco de ser necesario): '))
+				nuevaUbicacion = input('Nº de estante de depósito (dejar en blanco de ser necesario): ')
+				if nuevaUbicacion == '':			
+					break
+				else:
+					try:
+						int(nuevaUbicacion)
+						break
+					except ValueError:
+						print('La ubicación ingresada no es válida. Intente nuevamente: ')
+						continue
+					
+			query = f"""UPDATE PRODUCTOS SET 'UBICACION' = {nuevaUbicacion} WHERE 'ID' = {idProducto}"""
+			
+			cursor.execute(query)
+			conexion.close()
+			
+		elif opcion == 6:
+		
+			while True:
+				nuevoProveedor = input('Proveedor registrado (dejar en blanco de ser necesario): ')
+				if nuevoProveedor == '':
+					break
+				else:
+					try:
+						str(nuevoProveedor)
+						break
+					except ValueError:
+						print('El proveedor ingresado no es válido. Intente nuevamente: ')
+						continue
+				
+			query = f"""UPDATE PRODUCTOS SET 'PROVEEDOR' = {nuevoProveedor} WHERE 'ID' = {idProducto}"""
+			
+			cursor.execute(query)
+			conexion.close()
+			
+		elif opcion == 7:
+		
+			conexion.close()
+			break
