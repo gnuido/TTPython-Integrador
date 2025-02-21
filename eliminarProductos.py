@@ -13,3 +13,27 @@ def menuSecundario():
 		except ValueError:
 			print('El ID ingresado no es válido. Intente nuevamente: ')
 			continue
+
+		subMenu = [	'1> Eliminar un producto.',
+					'2> Volver al menú anterior.'	]
+					
+		import controlOpciones
+		opcion = controlOpciones.verificador(subMenu)
+
+	#--------------	
+		import sqlite3
+		conexion = sqlite3.connect()
+		cursor = conexion.cursor()
+		
+		if opcion == 1:
+		
+			query = f"""DELETE FROM PRODUCTOS WHERE 'ID' = {idProducto}"""
+		
+			cursor.execute(query)
+			conexion.close()
+			continue
+			
+		elif opcion == 2:
+			
+			conexion.close()
+			break

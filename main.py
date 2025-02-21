@@ -44,4 +44,16 @@ while opcion != 7:
 		actualizarProductos.menuSecundario()
 		continue
 		
-	
+	elif opcion == 5:
+		import eliminarProductos
+		eliminarProductos.menuSecundario()
+		continue
+		
+	elif opcion == 6:
+		print(	'Para recibir asistencia consulte a su administrador, ' +
+				'o bien complete una consulta en https://github.com/gnuido/TTPython-Integrador/issues')
+
+	elif opcion == 7:
+		continue
+		
+print('Finalizando . . .')
