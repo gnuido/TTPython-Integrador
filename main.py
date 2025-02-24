@@ -51,7 +51,7 @@ while opcion != 7:
 		
 	elif opcion == 6:
 		print(	'Para recibir asistencia consulte a su administrador, ' +
-				'o bien complete una consulta en https://github.com/gnuido/TTPython-Integrador/issues')
+				'o bien, complete una consulta en https://github.com/gnuido/TTPython-Integrador/issues')
 
 	elif opcion == 7:
 		continue

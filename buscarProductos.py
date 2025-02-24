@@ -5,7 +5,7 @@ def menuSecundario():
 	subMenu = [	'1> Buscar productos por ID.',
 				'2> Buscar productos por marca comercial.',
 				'3> Buscar productos por ubicación.',
-				'4>	Buscar productos por proveedor.',
+				'4> Buscar productos por proveedor.',
 				'5> Volver al menú anterior.'				]
 	
 	opcion = ''
@@ -36,11 +36,11 @@ def menuSecundario():
 			query = f"""SELECT * FROM PRODUCTOS WHERE 'ID' = {ID}"""
 		
 			cursor.execute(query)
-			lista = cursor.fetchone()		#ID único, debiese devolver un solo resultado
+			lista = cursor.fetchall()		#ID único, debiese devolver un solo resultado
 		
 			conexion.close()
 		
-			if len(list) == 0:
+			if len(lista) == 0:
 				print('No se hallaron productos que coincidan con el ID ingresado')
 			else:
 				print(lista)
@@ -55,15 +55,21 @@ def menuSecundario():
 				except ValueError:
 					print('La marca ingresada posee un formato no válido. Intente nuevamente: ')
 					continue
-		
+					
 			query = f"""SELECT * FROM PRODUCTOS WHERE 'MARCA' = {marca}"""
 		
-			cursor.execute(query)
-			lista = cursor.fetchall()
-		
+			while True:			#gestión búsquedas exitosas o fallidas	
+				try:
+					cursor.execute(query)
+					lista = cursor.fetchall()
+					break
+				except sqlite3.OperationalError:
+					lista = []		#se crea la lista vacía si el input no coincide con ningún campo de la tabla
+					break
+					
 			conexion.close()
 		
-			if len(list) == 0:
+			if len(lista) == 0:
 				print('No hay productos que coincidan con la marca ingresada.')
 			else:
 				print(lista)
@@ -86,7 +92,7 @@ def menuSecundario():
 	
 			conexion.close()
 	
-			if len(list) == 0:
+			if len(lista) == 0:
 				print('No hay productos que coincidan con el estante ingresado.')
 			else:
 				print(lista)
@@ -104,9 +110,15 @@ def menuSecundario():
 		
 			query = f"""SELECT * FROM PRODUCTOS WHERE 'PROVEEDOR' = {proveedor}"""
 	
-			cursor.execute(query)
-			lista = cursor.fetchall()
-	
+			while True:
+				try:
+					cursor.execute(query)
+					lista = cursor.fetchall()
+					break
+				except sqlite3.OperationalError:
+					lista = []
+					break
+					
 			conexion.close()
 	
 			if len(lista) == 0:
