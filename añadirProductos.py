@@ -8,7 +8,7 @@ def menuSecundario():
 	opcion = ''
 	while opcion != 2:
 		print('Seleccione una de las siguientes opciones: ')
-		for i in subMenu():
+		for i in subMenu:
 			print(i)
 		
 		import controlOpciones
@@ -16,14 +16,11 @@ def menuSecundario():
 		
 #--------------
 		import sqlite3
-		conexion = sqlite3.connect("INVENTARIO.DB")
+		conexion = sqlite3.connect("INVENTARIO.db")
 		cursor = conexion.cursor()
 		
 		if opcion == 1:
 			
-			query = """INSERT INTO PRODUCTOS ('MARCA', 'DESCRIPCION', 'CANTIDAD', 'PRECIO', 'UBICACION', 'PROVEEDOR')
-					VALUES (?, ?, ?, ?, ?, ?)"""
-		
 			while True:
 				try:
 					marca = str(input('Marca comercial: '))
@@ -66,13 +63,16 @@ def menuSecundario():
 		
 			while True:
 				try:
-					proveedor = str(input('Proveedor registrado: '))
+					proveedor = str(input('Proveedor registrado (dejar en blanco de ser necesario): '))
 					break
 				except ValueError:
 					print('El nombre ingresado no es válido. Intente nuevamente: ')
 					continue
 
-			cursor.execute(query, marca, descripcion, cantidad, precio, ubicacion, proveedor)
+			query = """INSERT INTO PRODUCTOS ('MARCA', 'DESCRIPCION', 'CANTIDAD', 'PRECIO', 'UBICACION', 'PROVEEDOR')
+					VALUES (?, ?, ?, ?, ?, ?)"""
+			
+			cursor.execute(query, (marca, descripcion, cantidad, precio, ubicacion, proveedor))	
 		
 			print('Se ha añadido el producto de forma exitosa')
 		

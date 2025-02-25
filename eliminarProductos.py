@@ -22,7 +22,7 @@ def menuSecundario():
 
 	#--------------	
 		import sqlite3
-		conexion = sqlite3.connect()
+		conexion = sqlite3.connect("INVENTARIO.db")
 		cursor = conexion.cursor()
 		
 		if opcion == 1:

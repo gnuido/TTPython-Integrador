@@ -19,7 +19,7 @@ def menuSecundario():
 	
 #--------------
 		import sqlite3
-		conexion = sqlite3.connect("INVENTARIO.DB")
+		conexion = sqlite3.connect("INVENTARIO.db")
 		cursor = conexion.cursor()
 	
 #%%%%%%
